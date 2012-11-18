@@ -2,12 +2,10 @@
 
 Very simple Ruby Gem to comunicate with the Transmission API.
 
-There are other alternatives:
+There are other alternatives, this one just works better for me but I recommend you to check out the others.:
 
 * [Transmission Client](https://github.com/dsander/transmission-client)
 * [Transmission Connector](https://github.com/mattissf/transmission-connector)
-
-This one just works better for me but I recommend you to check out the others.
 
 
 ## Installation
