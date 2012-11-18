@@ -98,11 +98,11 @@ class TransmissionApiTest < Test::Unit::TestCase
   def test_all
     opts_expected = {
       :method => "torrent-get",
-      :arguments => { :fields => "torrent_fields" }
+      :arguments => { :fields => "fields" }
     }
     result = { "arguments" => { "torrents" => "torrents" } }
 
-    @transmission_api.stubs(:torrent_fields).returns("torrent_fields")
+    @transmission_api.stubs(:fields).returns("fields")
     @transmission_api.expects(:post).with( opts_expected ).returns( result )
 
     assert_equal( "torrents", @transmission_api.all )
@@ -111,11 +111,11 @@ class TransmissionApiTest < Test::Unit::TestCase
   def test_find
     opts_expected = {
       :method => "torrent-get",
-      :arguments => { :fields => "torrent_fields", :ids => [1] }
+      :arguments => { :fields => "fields", :ids => [1] }
     }
     result = { "arguments" => { "torrents" => ["torrent1"] } }
 
-    @transmission_api.stubs(:torrent_fields).returns("torrent_fields")
+    @transmission_api.stubs(:fields).returns("fields")
     @transmission_api.expects(:post).with( opts_expected ).returns( result )
 
     assert_equal( "torrent1", @transmission_api.find(1) )

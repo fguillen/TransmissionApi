@@ -6,7 +6,7 @@ class TransmissionApi
   attr_accessor :session_id
   attr_accessor :url
   attr_accessor :basic_auth
-  attr_accessor :torrent_fields
+  attr_accessor :fields
   attr_accessor :debug_mode
 
   TORRENT_FIELDS = [
@@ -23,7 +23,7 @@ class TransmissionApi
 
   def initialize(opts)
     @url = opts[:url]
-    @torrent_fields = opts[:fields] || TORRENT_FIELDS
+    @fields = opts[:fields] || TORRENT_FIELDS
     @basic_auth = { :username => opts[:username], :password => opts[:password] } if opts[:username]
     @session_id = "NOT-INITIALIZED"
     @debug_mode = opts[:debug_mode] || false
@@ -36,7 +36,7 @@ class TransmissionApi
       post(
         :method => "torrent-get",
         :arguments => {
-          :fields => torrent_fields
+          :fields => fields
         }
       )
 
@@ -50,7 +50,7 @@ class TransmissionApi
       post(
         :method => "torrent-get",
         :arguments => {
-          :fields => torrent_fields,
+          :fields => fields,
           :ids => [id]
         }
       )
