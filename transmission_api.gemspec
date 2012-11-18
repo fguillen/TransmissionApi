@@ -4,8 +4,8 @@ require File.expand_path('../lib/transmission_api/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Fernando Guillen"]
   gem.email         = ["fguillen.mail@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = "small ruby wrapper for the Transmission RPC API"
+  gem.summary       = "small ruby wrapper for the Transmission RPC API"
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)
