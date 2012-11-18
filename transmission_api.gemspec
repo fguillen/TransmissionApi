@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["fguillen.mail@gmail.com"]
   gem.description   = "small ruby wrapper for the Transmission RPC API"
   gem.summary       = "small ruby wrapper for the Transmission RPC API"
-  gem.homepage      = ""
+  gem.homepage      = "https://github.com/fguillen/TransmissionApi"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
