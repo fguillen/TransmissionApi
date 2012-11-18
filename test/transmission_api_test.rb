@@ -21,12 +21,12 @@ class TransmissionApiTest < Test::Unit::TestCase
         :code => "",
         :message => "",
         :headers => "",
-        :body => "body"
+        :body => {"key" => "value"}.to_json
       )
 
     HTTParty.expects(:post).with( "http://api.url", opts_expected ).returns( response_mock )
 
-    assert_equal "body", @transmission_api.post(opts)
+    assert_equal "value", @transmission_api.post(opts)["key"]
   end
 
   def test_post_with_basic_auth
@@ -47,7 +47,7 @@ class TransmissionApiTest < Test::Unit::TestCase
         :code => "",
         :message => "",
         :headers => "",
-        :body => ""
+        :body => {}.to_json
       )
 
     HTTParty.expects(:post).with( "http://api.url", opts_expected ).returns( response_mock )
@@ -84,14 +84,14 @@ class TransmissionApiTest < Test::Unit::TestCase
         :code => 200,
         :message => "",
         :headers => "",
-        :body => "body"
+        :body => {"key" => "value"}.to_json
       )
 
     post_sequence = sequence("post_sequence")
     HTTParty.expects(:post).with( "http://api.url", opts_expected_1 ).returns( response_mock_1 ).in_sequence( post_sequence )
     HTTParty.expects(:post).with( "http://api.url", opts_expected_2 ).returns( response_mock_2 ).in_sequence( post_sequence )
 
-    assert_equal "body", @transmission_api.post(opts)
+    assert_equal "value", @transmission_api.post(opts)["key"]
     assert_equal "NEW-SESSION-ID", @transmission_api.instance_variable_get(:@session_id)
   end
 

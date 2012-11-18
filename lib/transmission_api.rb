@@ -88,7 +88,7 @@ class TransmissionApi
   end
 
   def post(opts)
-    http_post(opts).body
+    JSON::parse( http_post(opts).body )
   end
 
   def http_post(opts)
