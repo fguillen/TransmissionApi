@@ -1,6 +1,9 @@
-require "transmission_api/version"
+require_relative "transmission_api/version"
+require "httparty"
+require "json"
+require "recursive_open_struct"
 
-module TransmissionApi
+class TransmissionApi
   TORRENT_FIELDS = [
     "id",
     "name",
@@ -14,11 +17,10 @@ module TransmissionApi
   ]
 
   def initialize(opts)
-    @api_url = opts[:api_url]
+    @url = opts[:url]
     @torrent_fields = opts[:fields] || TORRENT_FIELDS
-
-    @client = HTTPClient.new
-    @client.basic_auth(opts[:username], opts[:password]) if opts[:username]
+    @auth = { :username => opts[:username], :password => opts[:password] } if opts[:username]
+    @session_id = "NOT-INITIALIZED"
   end
 
   def all
@@ -81,11 +83,20 @@ module TransmissionApi
   end
 
   def post(opts)
+    post_options = {
+      :body => opts.to_json,
+      :headers => { "x-transmission-session-id" => @session_id }
+    }
+    post_options.merge!( :basic_auth => @basic_auth ) if @basic_auth
+
+
+    puts "XXX: url: #{@url}"
+    puts "XXX: post_options: #{post_options}"
+
     response =
-      @client.post(
-        @api_url,
-        :body => opts.to_json,
-        :headers => { "x-transmission-session-id" => @session_id }
+      HTTParty.post(
+        @url,
+        post_options
       )
 
     puts "XXX: response.body: #{response.body}"
