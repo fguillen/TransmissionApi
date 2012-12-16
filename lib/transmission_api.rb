@@ -99,14 +99,13 @@ class TransmissionApi
     post_options.merge!( :basic_auth => basic_auth ) if basic_auth
 
     log "url: #{url}"
-    log "post_options: #{post_options}"
+    log "post_body:"
+    log JSON.parse(post_options[:body]).to_yaml
+    log "------------------"
 
     response = HTTParty.post( url, post_options )
 
-    log "response.body: #{response.body}"
-    log "response.code: #{response.code}"
-    log "response.message: #{response.message}"
-    log "response.headers: #{response.headers.inspect}"
+    log_response response
 
     # retry connection if session_id incorrect
     if( response.code == 409 )
@@ -120,5 +119,27 @@ class TransmissionApi
 
   def log(message)
     Kernel.puts "[TransmissionApi #{Time.now.strftime( "%F %T" )}] #{message}" if debug_mode
+  end
+
+  def log_response(response)
+    body = nil
+    begin
+      body = JSON.parse(response.body).to_yaml
+    rescue
+      body = response.body
+    end
+
+    headers = response.headers.to_yaml
+
+    log "response.code: #{response.code}"
+    log "response.message: #{response.message}"
+
+    log "response.body:"
+    log body
+    log "-----------------"
+
+    log "response.headers:"
+    log headers
+    log "------------------"
   end
 end
