@@ -134,6 +134,10 @@ class TransmissionApi
     log "response.code: #{response.code}"
     log "response.message: #{response.message}"
 
+    log "response.body_raw:"
+    log response.body
+    log "-----------------"
+
     log "response.body:"
     log body
     log "-----------------"
