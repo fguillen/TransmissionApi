@@ -1,13 +1,13 @@
 require_relative "test_helper"
 
-class TransmissionApiTest < Test::Unit::TestCase
+class ClientTest < Test::Unit::TestCase
   def setup
-    @transmission_api = TransmissionApi.new( :url => "http://api.url" )
+    @client = TransmissionApi::Client.new( :url => "http://api.url" )
   end
 
   def test_post
-    @transmission_api.stubs(:session_id).returns("SESSION-ID")
-    @transmission_api.stubs(:url).returns("http://api.url")
+    @client.stubs(:session_id).returns("SESSION-ID")
+    @client.stubs(:url).returns("http://api.url")
 
     opts = { :key1 => "value1", :key2 => "value2" }
 
@@ -26,13 +26,13 @@ class TransmissionApiTest < Test::Unit::TestCase
 
     HTTParty.expects(:post).with( "http://api.url", opts_expected ).returns( response_mock )
 
-    assert_equal "value", @transmission_api.post(opts)["key"]
+    assert_equal "value", @client.post(opts)["key"]
   end
 
   def test_post_with_basic_auth
-    @transmission_api.stubs(:session_id).returns("SESSION-ID")
-    @transmission_api.stubs(:url).returns("http://api.url")
-    @transmission_api.stubs(:basic_auth).returns("user_pass")
+    @client.stubs(:session_id).returns("SESSION-ID")
+    @client.stubs(:url).returns("http://api.url")
+    @client.stubs(:basic_auth).returns("user_pass")
 
     opts = { :key1 => "value1" }
 
@@ -52,12 +52,12 @@ class TransmissionApiTest < Test::Unit::TestCase
 
     HTTParty.expects(:post).with( "http://api.url", opts_expected ).returns( response_mock )
 
-    @transmission_api.post(opts)
+    @client.post(opts)
   end
 
   def test_post_with_409
-    @transmission_api.stubs(:url).returns("http://api.url")
-    @transmission_api.instance_variable_set(:@session_id, "SESSION-ID")
+    @client.stubs(:url).returns("http://api.url")
+    @client.instance_variable_set(:@session_id, "SESSION-ID")
 
     opts = { :key1 => "value1" }
 
@@ -91,8 +91,8 @@ class TransmissionApiTest < Test::Unit::TestCase
     HTTParty.expects(:post).with( "http://api.url", opts_expected_1 ).returns( response_mock_1 ).in_sequence( post_sequence )
     HTTParty.expects(:post).with( "http://api.url", opts_expected_2 ).returns( response_mock_2 ).in_sequence( post_sequence )
 
-    assert_equal "value", @transmission_api.post(opts)["key"]
-    assert_equal "NEW-SESSION-ID", @transmission_api.instance_variable_get(:@session_id)
+    assert_equal "value", @client.post(opts)["key"]
+    assert_equal "NEW-SESSION-ID", @client.instance_variable_get(:@session_id)
   end
 
   def test_all
@@ -102,10 +102,10 @@ class TransmissionApiTest < Test::Unit::TestCase
     }
     result = { "arguments" => { "torrents" => "torrents" } }
 
-    @transmission_api.stubs(:fields).returns("fields")
-    @transmission_api.expects(:post).with( opts_expected ).returns( result )
+    @client.stubs(:fields).returns("fields")
+    @client.expects(:post).with( opts_expected ).returns( result )
 
-    assert_equal( "torrents", @transmission_api.all )
+    assert_equal( "torrents", @client.all )
   end
 
   def test_find
@@ -115,10 +115,10 @@ class TransmissionApiTest < Test::Unit::TestCase
     }
     result = { "arguments" => { "torrents" => ["torrent1"] } }
 
-    @transmission_api.stubs(:fields).returns("fields")
-    @transmission_api.expects(:post).with( opts_expected ).returns( result )
+    @client.stubs(:fields).returns("fields")
+    @client.expects(:post).with( opts_expected ).returns( result )
 
-    assert_equal( "torrent1", @transmission_api.find(1) )
+    assert_equal( "torrent1", @client.find(1) )
   end
 
   def test_create
@@ -128,9 +128,9 @@ class TransmissionApiTest < Test::Unit::TestCase
     }
     result = { "arguments" => { "torrent-added" => "torrent-added" } }
 
-    @transmission_api.expects(:post).with( opts_expected ).returns( result )
+    @client.expects(:post).with( opts_expected ).returns( result )
 
-    assert_equal( "torrent-added", @transmission_api.create( "filename" ) )
+    assert_equal( "torrent-added", @client.create( "filename" ) )
   end
 
   def test_destroy
@@ -139,8 +139,8 @@ class TransmissionApiTest < Test::Unit::TestCase
       :arguments => { :ids => [1], :"delete-local-data" => true }
     }
 
-    @transmission_api.expects(:post).with( opts_expected )
-    @transmission_api.destroy(1)
+    @client.expects(:post).with( opts_expected )
+    @client.destroy(1)
   end
 
 end

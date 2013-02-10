@@ -1,0 +1,104 @@
+[ { "files" : [ { "bytesCompleted" : 27062831,
+          "length" : 52146735,
+          "name" : "No Media Kings - Ghosts With Shit Jobs trailer/Content/TRAILER_3_Cinetic.mov"
+        },
+        { "bytesCompleted" : 718,
+          "length" : 718,
+          "name" : "No Media Kings - Ghosts With Shit Jobs trailer/Description.txt"
+        },
+        { "bytesCompleted" : 51,
+          "length" : 51,
+          "name" : "No Media Kings - Ghosts With Shit Jobs trailer/License.txt"
+        }
+      ],
+    "hashString" : "77831ec368308f1031434c5581a76fd0c3e06cfd",
+    "name" : "No Media Kings - Ghosts With Shit Jobs trailer",
+    "percentDone" : 0.51890000000000003,
+    "rateDownload" : 0,
+    "rateUpload" : 0,
+    "totalSize" : 52147504
+  },
+  { "files" : [ { "bytesCompleted" : 24892844,
+          "length" : 24892844,
+          "name" : "Michael Mandiberg - Old News/Content/mandiberg_oldnews.mov"
+        },
+        { "bytesCompleted" : 237,
+          "length" : 237,
+          "name" : "Michael Mandiberg - Old News/Description.txt"
+        },
+        { "bytesCompleted" : 669,
+          "length" : 669,
+          "name" : "Michael Mandiberg - Old News/LegalTorrents.txt"
+        },
+        { "bytesCompleted" : 101,
+          "length" : 101,
+          "name" : "Michael Mandiberg - Old News/License.txt"
+        }
+      ],
+    "hashString" : "5f888e119ecb0cf8c25e68925164f533b1007038",
+    "name" : "Michael Mandiberg - Old News",
+    "percentDone" : 1,
+    "rateDownload" : 0,
+    "rateUpload" : 0,
+    "totalSize" : 24893851
+  },
+  { "files" : [ { "bytesCompleted" : 31103230,
+          "length" : 31103230,
+          "name" : "pearl-jam-life-wasted-video/PearlJamLifeWasted.avi"
+        } ],
+    "hashString" : "1b2162c33001cb3c51d917441e74e313996dff96",
+    "name" : "pearl-jam-life-wasted-video",
+    "percentDone" : 1,
+    "rateDownload" : 0,
+    "rateUpload" : 0,
+    "totalSize" : 31103230
+  },
+  { "files" : [ { "bytesCompleted" : 31772861,
+          "length" : 31772861,
+          "name" : "thewoolleyman - cinabox-screencast/Content/Cinabox_Screencast.mov"
+        },
+        { "bytesCompleted" : 309,
+          "length" : 309,
+          "name" : "thewoolleyman - cinabox-screencast/Description.txt"
+        },
+        { "bytesCompleted" : 669,
+          "length" : 669,
+          "name" : "thewoolleyman - cinabox-screencast/LegalTorrents.txt"
+        },
+        { "bytesCompleted" : 52,
+          "length" : 52,
+          "name" : "thewoolleyman - cinabox-screencast/License.txt"
+        }
+      ],
+    "hashString" : "0032886cdb4b0dcd6e75b5ac6901afda64367e0c",
+    "name" : "thewoolleyman - cinabox-screencast",
+    "percentDone" : 1,
+    "rateDownload" : 0,
+    "rateUpload" : 0,
+    "totalSize" : 31773891
+  },
+  { "files" : [ { "bytesCompleted" : 0,
+          "length" : 13894821,
+          "name" : "Von Allan Studio - the road to god knows___ trailer/Content/the road to god knows... graphic novel trailer.wmv"
+        },
+        { "bytesCompleted" : 0,
+          "length" : 1114,
+          "name" : "Von Allan Studio - the road to god knows___ trailer/Description.txt"
+        },
+        { "bytesCompleted" : 0,
+          "length" : 669,
+          "name" : "Von Allan Studio - the road to god knows___ trailer/LegalTorrents.txt"
+        },
+        { "bytesCompleted" : 0,
+          "length" : 127,
+          "name" : "Von Allan Studio - the road to god knows___ trailer/License.txt"
+        }
+      ],
+    "hashString" : "6d97bb6424d048fe605d3fe558c5c5333cdd6227",
+    "name" : "Von Allan Studio - the road to god knows___ trailer",
+    "percentDone" : 0,
+    "rateDownload" : 0,
+    "rateUpload" : 0,
+    "totalSize" : 13896731
+  }
+]
