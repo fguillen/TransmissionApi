@@ -84,7 +84,13 @@ class TransmissionApi::Client
   end
 
   def post(opts)
-    JSON::parse( http_post(opts).body )
+    response_parsed = JSON::parse( http_post(opts).body )
+
+    if response_parsed["result"] != "success"
+      raise TransmissionApi::Exception, response_parsed["result"]
+    end
+
+    response_parsed
   end
 
   def http_post(opts)

@@ -21,7 +21,7 @@ class ClientTest < Test::Unit::TestCase
         :code => "",
         :message => "",
         :headers => "",
-        :body => {"key" => "value"}.to_json
+        :body => {"key" => "value", "result" => "success"}.to_json
       )
 
     HTTParty.expects(:post).with( "http://api.url", opts_expected ).returns( response_mock )
@@ -47,7 +47,7 @@ class ClientTest < Test::Unit::TestCase
         :code => "",
         :message => "",
         :headers => "",
-        :body => {}.to_json
+        :body => {"result" => "success"}.to_json
       )
 
     HTTParty.expects(:post).with( "http://api.url", opts_expected ).returns( response_mock )
@@ -84,7 +84,7 @@ class ClientTest < Test::Unit::TestCase
         :code => 200,
         :message => "",
         :headers => "",
-        :body => {"key" => "value"}.to_json
+        :body => {"key" => "value", "result" => "success"}.to_json
       )
 
     post_sequence = sequence("post_sequence")
@@ -141,6 +141,18 @@ class ClientTest < Test::Unit::TestCase
 
     @client.expects(:post).with( opts_expected )
     @client.destroy(1)
+  end
+
+  def test_if_not_success_raise_exception
+    result_mock = mock(:body => { "arguments" => {}, "result" => "Wadus error" }.to_json)
+    @client.expects(:http_post).returns(result_mock)
+
+    exception =
+      assert_raise(TransmissionApi::Exception) do
+        @client.create("filename")
+      end
+
+    assert_equal("Wadus error", exception.message)
   end
 
 end
