@@ -19,8 +19,8 @@ class TransmissionApi::ClientFake < TransmissionApi::Client
   def create(filename)
     torrent = {
       "files" => [],
-      "hashString" => Digest::MD5.hexdigest(Time.now.to_i.to_s),
-      "name" => "Wadus name torrent",
+      "hashString" => "77831ec368308f1031434c5581a76fd0c3e06cfd",
+      "name" => "No Media Kings - Ghosts With Shit Jobs trailer",
       "percentDone" => 0,
       "rateUpload" => 0,
       "rateDownload" => 0,

@@ -14,8 +14,7 @@ class ClientFakeTest < Test::Unit::TestCase
   end
 
   def test_create
-    Digest::MD5.expects(:hexdigest).returns("WADUS-HASH")
-    assert_equal( "WADUS-HASH", @client.create("filename")["hashString"] )
+    assert_equal( "77831ec368308f1031434c5581a76fd0c3e06cfd", @client.create("filename")["hashString"] )
   end
 
   def test_destroy
