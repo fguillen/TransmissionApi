@@ -1,6 +1,6 @@
 require_relative "test_helper"
 
-class ClientFakeTest < Test::Unit::TestCase
+class ClientFakeTest < Minitest::Test
   def setup
     @client = TransmissionApi::ClientFake.new({})
   end

@@ -1,6 +1,6 @@
 require_relative "test_helper"
 
-class ClientTest < Test::Unit::TestCase
+class ClientTest < Minitest::Test
   def setup
     @client = TransmissionApi::Client.new( :url => "http://api.url" )
   end
@@ -148,7 +148,7 @@ class ClientTest < Test::Unit::TestCase
     @client.expects(:http_post).returns(result_mock)
 
     exception =
-      assert_raise(TransmissionApi::Exception) do
+      assert_raises(TransmissionApi::Exception) do
         @client.create("filename")
       end
 
