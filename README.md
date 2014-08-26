@@ -24,17 +24,17 @@ Or install it yourself as:
 
 ## Usage
 
-    transmission_api =
-      TransmissionApi.new(
+    transmission_api_client =
+      TransmissionApi::Client.new(
         :username => "username",
         :password => "password",
         :url      => "http://127.0.0.1:9091/transmission/rpc"
       )
 
-    torrents = transmission_api.all
-    torrent = transmission_api.find(id)
-    torrent = transmission_api.create("http://torrent.com/nice_pic.torrent")
-    transmission_api.destroy(id)
+    torrents = transmission_api_client.all
+    torrent = transmission_api_client.find(id)
+    torrent = transmission_api_client.create("http://torrent.com/nice_pic.torrent")
+    transmission_api_client.destroy(id)
 
 ## State
 
