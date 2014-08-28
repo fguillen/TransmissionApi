@@ -17,5 +17,7 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency "httparty", "0.9.0"
 
-  gem.add_development_dependency "mocha", "0.13.0"
+  gem.add_development_dependency "mocha", "~> 1.1.0"
+  gem.add_development_dependency "minitest", "~> 5.4.0"
+  gem.add_development_dependency "rake", "~> 10.3.2"
 end
